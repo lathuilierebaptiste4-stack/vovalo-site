@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact – VOVALO</title>
+  <meta name="description" content="Prenez contact avec VOVALO : un premier échange, sans engagement, pour parler de votre entreprise.">
+  <meta name="theme-color" content="#10233F">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="VOVALO">
+  <meta property="og:title" content="Contact – VOVALO">
+  <meta property="og:description" content="Prenez contact avec VOVALO : un premier échange, sans engagement, pour parler de votre entreprise.">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="preload" href="fonts/PublicSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/PublicSans-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo-link" href="/accueil" aria-label="VOVALO, accueil">
+        <img src="images/logo-header.png" width="136" height="40" alt="VOVALO — Valorisation d’entreprise" class="logo-header-img logo-header-img--full">
+        <img src="images/logo-mark.png" width="43" height="40" alt="VOVALO — Valorisation d’entreprise" class="logo-header-img logo-header-img--mark">
+      </a>
+      <div class="header-actions">
+        <nav class="nav-desktop" aria-label="Navigation principale">
+          <ul class="nav-list">
+            <li><a href="/accueil">Accueil</a></li>
+            <li><a href="/equipe">Équipe</a></li>
+          </ul>
+        </nav>
+        <details class="nav-toggle">
+          <summary>Menu</summary>
+          <nav class="nav-panel" aria-label="Navigation principale">
+            <ul class="nav-list">
+              <li><a href="/accueil">Accueil</a></li>
+              <li><a href="/equipe">Équipe</a></li>
+            </ul>
+          </nav>
+        </details>
+        <a class="btn btn--header" href="/contact" aria-current="page">Prendre contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <section class="page-head on-navy">
+      <div class="wrap">
+        <h1>Prendre contact</h1>
+        <p>Décrivez en quelques lignes votre entreprise et ce que vous souhaitez savoir. Nous vous répondons pour convenir d’un premier échange, sans engagement.</p>
+      </div>
+    </section>
+    <section class="section">
+      <div class="wrap">
+        <form class="form" id="form-contact" name="contact" method="POST" data-netlify="true" netlify-honeypot="site_web" novalidate>
+          <input type="hidden" name="form-name" value="contact">
+          <div class="field">
+            <label for="nom">Votre nom</label>
+            <input id="nom" name="nom" type="text" autocomplete="name" required maxlength="120">
+          </div>
+          <div class="field">
+            <label for="entreprise">Votre entreprise</label>
+            <input id="entreprise" name="entreprise" type="text" autocomplete="organization" required maxlength="160">
+          </div>
+          <div class="field">
+            <label for="email">Votre e-mail</label>
+            <input id="email" name="email" type="email" autocomplete="email" required maxlength="160">
+          </div>
+          <div class="field">
+            <label for="telephone">Votre téléphone <span class="hint">Facultatif.</span></label>
+            <input id="telephone" name="telephone" type="tel" autocomplete="tel" maxlength="40">
+          </div>
+          <div class="field">
+            <label for="message">Votre message</label>
+            <textarea id="message" name="message" required maxlength="3000"></textarea>
+          </div>
+
+          <!-- Champ piège anti-spam : ne pas remplir. Un robot le remplira, pas un visiteur. -->
+          <div class="field field--piege" aria-hidden="true">
+            <label for="site_web">Ne pas remplir ce champ</label>
+            <input id="site_web" name="site_web" type="text" tabindex="-1" autocomplete="off">
+          </div>
+
+          <button class="btn" type="submit">Envoyer le message</button>
+          <p class="form-statut" id="form-statut" role="status" aria-live="polite"></p>
+
+          <p class="rgpd">Les informations saisies ici servent uniquement à répondre à votre demande. Elles ne sont pas transmises à des tiers à des fins commerciales. Vous disposez de droits d’accès, de rectification et de suppression.<br><a class="link-more" href="/confidentialite">Lire la politique de confidentialité</a></p>
+          <noscript><p class="form-statut err">Le formulaire nécessite JavaScript pour envoyer le message.</p></noscript>
+        </form>
+
+        <p class="aside-note">
+          Vous pouvez aussi nous écrire directement à <a href="mailto:contact@vovalo.fr">contact@vovalo.fr</a>.
+        </p>
+        <p class="aside-note">N’envoyez pas de documents (bilans, bulletins de paie…) par ce formulaire ou par e-mail. Un accord de confidentialité est signé avant tout échange de documents.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer on-navy">
+    <div class="wrap">
+      <div>
+        <a class="logo-link" href="/accueil" aria-label="VOVALO, accueil">
+          <img src="images/logo-fond-navy.png" width="188" height="72" alt="VOVALO — Valorisation d’entreprise" class="logo-footer-img">
+        </a>
+        <p style="margin:.5rem 0 0">Micro-entreprise — Matthieu Lathuilière</p>
+      </div>
+      <nav aria-label="Informations légales">
+        <ul>
+          <li><a href="/mentions-legales">Mentions légales</a></li>
+          <li><a href="/confidentialite">Politique de confidentialité</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+  <script src="js/envoi.js"></script>
+</body>
+</html>

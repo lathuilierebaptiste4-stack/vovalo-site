@@ -1,0 +1,6 @@
+.claude/
+node_modules/
+.DS_Store
+Thumbs.db
+# Captures d'origine du logo, non utilisées par le site (ne pas publier)
+images/source-*

@@ -1,0 +1,550 @@
+/* VOVALO — feuille de style commune. Couleurs à modifier ici uniquement. */
+
+@font-face {
+  font-family: "Public Sans";
+  src: url("../fonts/PublicSans-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Public Sans";
+  src: url("../fonts/PublicSans-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Public Sans";
+  src: url("../fonts/PublicSans-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Public Sans";
+  src: url("../fonts/PublicSans-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Public Sans";
+  src: url("../fonts/PublicSans-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --navy: #10233F;
+  --white: #FFFFFF;
+  --grey: #B8C2CF;
+  /* Dérivés des trois couleurs (aucune nouvelle teinte) */
+  --ink-soft: color-mix(in srgb, var(--navy) 72%, var(--white)); /* texte secondaire sur blanc */
+  --tint: color-mix(in srgb, var(--grey) 25%, var(--white));     /* fonds de section */
+  --grey-mid: color-mix(in srgb, var(--grey) 45%, var(--white)); /* gris clair atténué, composants (placeholders) */
+  --navy-hover: color-mix(in srgb, var(--navy) 85%, var(--white));
+
+  --font: "Public Sans", system-ui, sans-serif;
+  --gutter: 1rem;
+  --max: 68rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--navy);
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+img, svg { max-width: 100%; }
+
+a { color: inherit; text-underline-offset: 0.2em; }
+
+:focus-visible {
+  outline: 3px solid var(--navy);
+  outline-offset: 3px;
+}
+.on-navy :focus-visible { outline-color: var(--white); }
+
+.wrap {
+  width: 100%;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.skip {
+  position: absolute; left: var(--gutter); top: -4rem;
+  background: var(--navy); color: var(--white);
+  padding: .6rem 1rem; z-index: 10;
+}
+.skip:focus { top: .5rem; }
+
+/* ---------- Logo (header/footer) ---------- */
+.logo-link { display: inline-flex; align-items: center; min-height: 44px; }
+.logo-header-img { display: block; height: 40px; width: auto; }
+.logo-footer-img { display: block; height: 72px; width: auto; }
+
+/* Sous 640px, le lockup complet (signe + texte) devient trop petit à côté des
+   boutons du header : on bascule sur le signe seul, un peu agrandi. */
+.logo-header-img--mark { display: none; }
+@media (max-width: 40rem) {
+  .logo-header-img--full { display: none; }
+  .logo-header-img--mark { display: block; height: 44px; }
+}
+
+/* Wordmark texte : encore utilisé dans la couverture de l'exemple fictif de rapport */
+.wordmark {
+  display: inline-flex; align-items: center; min-height: 44px;
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: .06em;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ---------- Boutons ---------- */
+.btn {
+  display: inline-block;
+  padding: .8rem 1.4rem;
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid var(--navy);
+  background: var(--navy);
+  color: var(--white);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color .15s;
+}
+.btn:hover { background: var(--navy-hover); }
+.btn--light { background: var(--white); color: var(--navy); border-color: var(--white); }
+.btn--light:hover { background: var(--tint); }
+
+/* ---------- En-tête ---------- */
+.site-header { background: var(--white); border-bottom: 1px solid var(--grey); }
+.site-header .wrap {
+  display: flex; align-items: center; justify-content: space-between;
+  min-height: 4rem; gap: 1rem;
+}
+.nav-list { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: 1.75rem; }
+.nav-list a { text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; min-height: 44px; }
+.nav-list a:hover, .nav-list a[aria-current="page"] { text-decoration: underline; text-underline-offset: .35em; }
+
+/* Bouton « Prendre contact » : toujours visible, hors du menu qui se replie */
+.header-actions { display: flex; align-items: center; gap: .75rem; }
+.btn--header { padding: .55rem 1.1rem; white-space: nowrap; }
+.btn--header:hover { text-decoration: none; }
+.btn--header[aria-current="page"] { background: var(--navy-hover); }
+
+/* Menu mobile sans JavaScript : <details> */
+.nav-toggle summary {
+  list-style: none; cursor: pointer; font-weight: 600;
+  padding: .55rem .9rem; border: 2px solid var(--navy); border-radius: 2px;
+}
+.nav-toggle summary::-webkit-details-marker { display: none; }
+.nav-toggle[open] summary { background: var(--navy); color: var(--white); }
+.nav-panel {
+  position: absolute; left: 0; right: 0; top: 100%;
+  background: var(--white); border-bottom: 1px solid var(--grey);
+  padding: 1rem var(--gutter) 1.5rem;
+}
+.site-header { position: relative; }
+.nav-panel .nav-list { flex-direction: column; align-items: stretch; gap: 0; }
+.nav-panel .nav-list li { border-top: 1px solid var(--grey); }
+.nav-panel .nav-list a { display: block; padding: .9rem 0; }
+.nav-panel .nav-list li:last-child { border-top: 0; }
+
+.nav-desktop { display: none; }
+
+/* ---------- Aplat marine (élément mémorable) ---------- */
+.hero {
+  background: var(--navy);
+  color: var(--white);
+  padding-block: clamp(3.5rem, 12vw, 8rem);
+}
+.hero h1 {
+  margin: 0 0 1.5rem;
+  font-size: clamp(2.4rem, 8vw, 4.75rem);
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  max-width: 14ch;
+}
+.hero .lead {
+  margin: 0 0 2.25rem;
+  max-width: 40rem;
+  font-size: clamp(1.1rem, 2.4vw, 1.3rem);
+  color: var(--grey);
+}
+
+/* ---------- Sections « bilan » ---------- */
+.section { padding-block: clamp(2.25rem, 6vw, 4rem); }
+.section--tint { background: var(--tint); }
+.section--tight { padding-block: clamp(1.25rem, 3vw, 2rem); }
+/* Deux blocs courts sous un même fond, sans bande blanche entre eux */
+.subsection + .subsection { margin-top: 2rem; }
+.section h2 {
+  margin: 0 0 1.75rem;
+  font-size: clamp(1.6rem, 4vw, 2.25rem);
+  line-height: 1.15;
+  letter-spacing: -.01em;
+}
+.ledger { margin: 0; padding: 0; border-bottom: 1px solid var(--navy); }
+.ledger .row {
+  display: grid; gap: .35rem;
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--navy);
+}
+.ledger dt { font-weight: 700; font-size: 1.1rem; }
+.ledger dd { margin: 0; max-width: 42rem; color: var(--ink-soft); }
+.section--tint .ledger dd { color: var(--navy); }
+.ledger dd p { margin: 0; }
+.ledger dd .link-more { padding-block: .5rem 0; }
+
+.prose { max-width: 42rem; }
+.prose p { margin: 0 0 1rem; }
+.prose .discreet { color: var(--ink-soft); font-size: .95rem; }
+.section--tint .prose .discreet { color: var(--navy); }
+
+.link-more { font-weight: 600; display: inline-block; padding-block: .7rem; }
+
+/* ---------- Bandeau contact ---------- */
+.cta { background: var(--navy); color: var(--white); padding-block: clamp(3rem, 8vw, 5rem); }
+.cta h2 { margin: 0 0 1rem; font-size: clamp(1.6rem, 4vw, 2.25rem); }
+.cta p { margin: 0 0 1.75rem; max-width: 36rem; color: var(--grey); }
+
+/* ---------- Pied de page ---------- */
+.site-footer { background: var(--navy); color: var(--grey); padding-block: 2rem 2.5rem;
+  border-top: 1px solid color-mix(in srgb, var(--grey) 45%, var(--navy)); font-size: .95rem; }
+.site-footer .wrap { display: grid; gap: 1.25rem; }
+.site-footer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0 1.5rem; }
+.site-footer li a, .site-footer p a { display: inline-block; padding-block: .7rem; }
+.site-footer a { color: var(--white); }
+.placeholder { background: var(--grey); color: var(--navy); padding: 0 .3em; border-radius: 2px; }
+
+/* ---------- Grand écran ---------- */
+@media (min-width: 52rem) {
+  :root { --gutter: 2rem; }
+  .nav-toggle { display: none; }
+  .nav-desktop { display: block; }
+  .ledger .row { grid-template-columns: 16rem 1fr; gap: 2rem; padding: 1.5rem 0; }
+  .site-footer .wrap { grid-template-columns: 1fr auto; align-items: end; }
+}
+
+/* ---------- Mouvement : un seul effet, à l'arrivée ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .hero .wrap { animation: arrive .6s ease-out both; }
+  @keyframes arrive { from { opacity: 0; transform: translateY(.75rem); } }
+}
+
+/* ---------- Pages intérieures et formulaire ---------- */
+.page-head { background: var(--navy); color: var(--white); padding-block: clamp(2.5rem, 8vw, 5rem); }
+.page-head h1 { margin: 0 0 1rem; font-size: clamp(2rem, 6vw, 3.25rem); line-height: 1.1; font-weight: 700; letter-spacing: -.02em; }
+.page-head p { margin: 0; max-width: 40rem; color: var(--grey); font-size: 1.1rem; }
+.page-head--compact { padding-block: clamp(1.25rem, 4vw, 2.5rem); }
+
+.form { max-width: 40rem; }
+.field { margin-bottom: 1.5rem; }
+.field label { display: block; font-weight: 600; margin-bottom: .4rem; }
+.field .hint { display: block; font-weight: 400; color: var(--ink-soft); font-size: .95rem; }
+.field input, .field textarea {
+  width: 100%; font: inherit; color: var(--navy); background: var(--white);
+  border: 2px solid var(--navy); border-radius: 2px; padding: .7rem .8rem;
+}
+.field textarea { min-height: 9rem; resize: vertical; }
+.field input:focus-visible, .field textarea:focus-visible { outline: 3px solid var(--navy); outline-offset: 2px; }
+/* Champ piège : hors écran, invisible pour les humains */
+.field--piege { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.rgpd { margin: 1.5rem 0 0; font-size: .95rem; color: var(--ink-soft); max-width: 40rem; }
+.form-statut { margin: 1.25rem 0 0; padding: 0; min-height: 1.5rem; font-weight: 600; }
+.form-statut.ok, .form-statut.err { padding: .8rem 1rem; border-left: 4px solid var(--navy); background: var(--tint); }
+.aside-note { margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid var(--navy); max-width: 40rem; }
+
+/* ---------- Équipe : bloc personne (photo + texte) ---------- */
+.person { display: flex; align-items: center; gap: 2rem; }
+.person-body { flex: 1 1 auto; min-width: 0; }
+.person-body h2 { margin: 0 0 .75rem; }
+
+/* Emplacement photo en attente : un composant fini, pas un oubli */
+.photo-placeholder {
+  flex: 0 0 38%;
+  aspect-ratio: 4 / 5;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--grey-mid);
+}
+.photo-placeholder .placeholder {
+  background: none; padding: 0 1rem; font-size: .8rem; text-align: center;
+  color: var(--ink-soft); white-space: normal;
+}
+.photo-caption { margin: .75rem 0 1.5rem; max-width: 42rem; font-size: .95rem; color: var(--ink-soft); }
+
+@media (max-width: 40rem) {
+  .person { flex-direction: column; align-items: stretch; }
+  .person .photo-placeholder { flex: none; width: 60%; max-width: 12rem; margin-inline: auto; }
+}
+
+.legal h2 { margin: 2.5rem 0 .75rem; font-size: 1.35rem; }
+.legal p, .legal li { max-width: 42rem; }
+.legal ul { padding-left: 1.25rem; }
+.legal .placeholder { white-space: normal; }
+
+/* ---------- La démarche : seule séquence numérotée du site ---------- */
+.steps { list-style: none; margin: 0; padding: 0; counter-reset: etape; border-bottom: 1px solid var(--navy); }
+.steps > li { counter-increment: etape; display: grid; gap: .5rem; padding: 1.75rem 0; border-top: 1px solid var(--navy); }
+.steps > li::before { content: counter(etape); font-size: 2.5rem; font-weight: 800; line-height: 1; }
+.steps h3 { margin: 0 0 .5rem; font-size: 1.4rem; }
+.steps p { margin: 0; max-width: 40rem; }
+.steps-note { margin: 1rem 0 0; font-size: .9rem; color: var(--navy); max-width: 40rem; }
+.steps ul { margin: .75rem 0 0; padding-left: 1.25rem; max-width: 40rem; }
+.precision { margin-top: 2rem; padding: 1.25rem 1.5rem; background: var(--tint); border-left: 4px solid var(--navy); max-width: 42rem; }
+.precision p { margin: 0; }
+
+/* ---------- Le rapport : exemple fictif ---------- */
+.fictif-banner { background: var(--grey); color: var(--navy); font-weight: 700; padding: .75rem 1rem; border: 2px solid var(--navy); margin-bottom: 1.5rem; }
+.sample { display: grid; gap: 1.5rem; }
+.sample-page { background: var(--white); border: 1px solid var(--navy); padding: 1.5rem; position: relative; }
+.sample-page .tag { display: block; font-size: .85rem; font-weight: 700; margin-bottom: 1rem; padding-bottom: .5rem; border-bottom: 1px solid var(--grey); }
+.sample-page h3 { margin: 0 0 .75rem; font-size: 1.15rem; }
+.sample-page ul { margin: 0; padding-left: 1.2rem; }
+.sample-page .big { font-size: clamp(1.4rem, 5.6vw, 2.2rem); font-weight: 800; margin: 0 0 .5rem; }
+.sample-cover { background: var(--navy); color: var(--white); padding: 2rem 1.5rem; min-height: 16rem; display: flex; flex-direction: column; justify-content: space-between; }
+.sample-cover .wordmark { color: var(--white); min-height: 0; }
+.sample-cover h3 { margin: 0 0 .5rem; font-size: 1.6rem; line-height: 1.15; color: var(--white); }
+.sample-cover p { margin: 0; color: var(--grey); }
+.sample-cover .tag { color: var(--white); border-color: var(--grey); }
+@media (min-width: 52rem) {
+  .steps > li { grid-template-columns: 6rem 1fr; gap: 2rem; }
+  .sample { grid-template-columns: repeat(3, 1fr); align-items: start; }
+}
+
+/* ---------- Exemple de rapport : captures réelles, en feuilleté défilant ---------- */
+.report-gallery {
+  display: flex;
+  align-items: flex-start; /* chaque carte garde sa propre hauteur (pas d'étirement flex) */
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: var(--gutter);
+  padding-bottom: .75rem; /* respire au-dessus de la barre de défilement native */
+  margin: 0 calc(var(--gutter) * -1);
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+.report-gallery__item {
+  margin: 0;
+  flex: 0 0 82%;
+  max-width: 20rem;
+  scroll-snap-align: start;
+  border: 1px solid var(--grey);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--white);
+}
+.report-gallery__item img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.report-gallery__item figcaption {
+  padding: .6rem .8rem .75rem;
+  font-size: .85rem;
+  color: var(--ink-soft);
+  text-align: center;
+  border-top: 1px solid var(--grey);
+}
+
+@media (min-width: 40rem) {
+  .report-gallery__item {
+    flex: 0 0 auto;
+    max-width: none;
+  }
+  .report-gallery__item img {
+    width: auto;
+    height: 450px;
+  }
+}
+.nav-list .btn[aria-current="page"] { text-decoration: none; }
+
+/* ==========================================================================
+   Animation d'entrée (accueil uniquement). DEUX VERSIONS coexistent :
+   - « tracé »        (data-intro="draw", js/intro-draw.js) — tracé du contour
+     puis remplissage en fondu instantané. Version précédente, conservée pour
+     rollback.
+   - « tracé + balayage » (data-intro="draw-sweep", js/intro-draw-sweep.js) —
+     tracé du contour puis remplissage progressif (balayage bas → haut),
+     pause, transition vers le header. Version actuelle.
+   Seule celle qui correspond à l'attribut data-intro de <html> peut s'afficher ;
+   chaque overlay est masqué par défaut et scopé à sa propre valeur de
+   data-intro, pour qu'elles ne puissent jamais se superposer. Pour revenir
+   en arrière : changer data-intro="draw-sweep" en "draw" sur <html>, dans
+   index.html. Sans JavaScript, aucune des deux ne s'affiche.
+
+   (La toute première version, un simple fondu sans tracé, a été retirée du
+   projet — code, styles et fichier JS supprimés — une fois la version au
+   tracé validée.)
+   ========================================================================== */
+
+#intro-overlay-draw,
+#intro-overlay-sweep {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--white);
+  align-items: center;
+  justify-content: center;
+}
+html.intro-pending[data-intro="draw"] #intro-overlay-draw { display: flex; }
+html.intro-pending[data-intro="draw-sweep"] #intro-overlay-sweep { display: flex; }
+
+/* Contenu réel de la page : visible par défaut : ne dépend jamais de JS pour s'afficher.
+   .intro-hide et .reveal sont indépendants du cycle de vie de l'overlay (posé par JS,
+   jamais retiré) : le fondu d'apparition du site continue même après la disparition
+   de l'overlay, sans être coupé net. Commun aux deux versions. */
+#page { opacity: 1; }
+#page.intro-hide { opacity: 0; }
+#page.reveal {
+  opacity: 1;
+  transition: opacity var(--reveal-duration, 1.6s) ease-out;
+}
+
+@keyframes introBgOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* ---------- Version « tracé » (data-intro="draw") ---------- */
+
+.intro-stack { display: flex; flex-direction: column; align-items: center; }
+
+.intro-mark { display: flex; flex-direction: column; align-items: center; }
+
+.intro-sign-svg {
+  width: clamp(5.5rem, 26vw, 9rem);
+  height: auto;
+  overflow: visible;
+  display: block;
+}
+.intro-sign-path {
+  fill: var(--navy);
+  fill-opacity: 0;
+  stroke: var(--navy);
+  stroke-width: 4;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  stroke-dasharray: var(--path-length, 900);
+  stroke-dashoffset: var(--path-length, 900);
+}
+#intro-overlay-draw.intro-draw-run .intro-sign-path {
+  animation: introDraw var(--draw-duration, .9s) ease-in-out forwards;
+}
+#intro-overlay-draw.intro-fill-run .intro-sign-path {
+  animation: introFill var(--fill-duration, .35s) ease-out forwards;
+}
+
+.intro-word {
+  width: clamp(11rem, 52vw, 18rem);
+  height: auto;
+  display: block;
+  margin-top: .9rem;
+  opacity: 0;
+}
+.intro-subtitle {
+  width: clamp(10rem, 46vw, 15rem);
+  height: auto;
+  display: block;
+  margin-top: .7rem;
+  opacity: 0;
+}
+#intro-overlay-draw.intro-text-run .intro-word,
+#intro-overlay-draw.intro-text-run .intro-subtitle {
+  animation: introTextIn var(--text-duration, .3s) ease-out forwards;
+}
+
+#intro-overlay-draw.intro-leave {
+  animation: introBgOut var(--leave-duration, .6s) ease-out forwards;
+}
+#intro-overlay-draw.intro-leave .intro-mark {
+  animation: introMarkOut var(--leave-duration, .6s) ease-out forwards;
+}
+#intro-overlay-draw.intro-leave .intro-subtitle {
+  /* Le sous-titre disparaît dès le début du déplacement, plus vite que le reste. */
+  animation: introSubtitleOut calc(var(--leave-duration, .6s) * .4) ease-out forwards;
+}
+
+@keyframes introDraw {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes introFill {
+  to { fill-opacity: 1; }
+}
+@keyframes introTextIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes introMarkOut {
+  0%   { opacity: 1; transform: translate(0, 0) scale(1); }
+  55%  { opacity: 0; }
+  100% { opacity: 0; transform: translate(var(--ix, 0px), var(--iy, 0px)) scale(var(--is, .3)); }
+}
+@keyframes introSubtitleOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* ---------- Version « tracé + balayage » (data-intro="draw-sweep") ---------- */
+/* .intro-stack, .intro-mark, .intro-sign-svg, .intro-word et .intro-subtitle
+   sont définis plus haut (génériques, partagés avec la version « tracé »). */
+
+.intro-sweep-outline {
+  fill: none;
+  stroke: var(--navy);
+  stroke-width: 4;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  stroke-dasharray: var(--path-length, 900);
+  stroke-dashoffset: var(--path-length, 900);
+}
+.intro-sweep-fill {
+  fill: var(--navy);
+  /* Rien n'est visible tant que le remplissage n'a pas commencé : la forme
+     est entièrement masquée depuis le haut (balayage du bas vers le haut). */
+  clip-path: inset(100% 0 0 0);
+}
+#intro-overlay-sweep.intro-draw-run .intro-sweep-outline {
+  animation: introDraw var(--draw-duration, .9s) ease-in-out forwards;
+}
+#intro-overlay-sweep.intro-fill-run .intro-sweep-fill {
+  animation: introSweepFill var(--fill-duration, .7s) ease-in-out forwards;
+}
+#intro-overlay-sweep.intro-text-run .intro-word,
+#intro-overlay-sweep.intro-text-run .intro-subtitle {
+  animation: introTextIn var(--text-duration, .35s) ease-out forwards;
+}
+#intro-overlay-sweep.intro-leave {
+  animation: introBgOut var(--leave-duration, .6s) ease-out forwards;
+}
+#intro-overlay-sweep.intro-leave .intro-mark {
+  animation: introMarkOut var(--leave-duration, .6s) ease-out forwards;
+}
+#intro-overlay-sweep.intro-leave .intro-subtitle {
+  /* Le sous-titre disparaît dès le début du déplacement, plus vite que le reste. */
+  animation: introSubtitleOut calc(var(--leave-duration, .6s) * .4) ease-out forwards;
+}
+
+@keyframes introSweepFill {
+  to { clip-path: inset(0% 0 0 0); }
+}

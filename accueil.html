@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr" data-intro="draw-sweep">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VOVALO – Connaître la vraie valeur de votre entreprise</title>
+  <meta name="description" content="VOVALO réalise des valorisations financières indépendantes pour les dirigeants de TPE et PME.">
+  <meta name="theme-color" content="#10233F">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="VOVALO">
+  <meta property="og:title" content="VOVALO – Connaître la vraie valeur de votre entreprise">
+  <meta property="og:description" content="VOVALO réalise des valorisations financières indépendantes pour les dirigeants de TPE et PME.">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="preload" href="fonts/PublicSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/PublicSans-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+
+  <!--
+    ============================================================================
+    ANIMATION D'ENTRÉE (accueil uniquement) — DEUX VERSIONS EN PLACE.
+    Seule celle qui correspond à l'attribut data-intro de <html> (ci-dessus)
+    s'active ; l'autre reste invisible et inerte (display:none, son script se
+    termine immédiatement). Aucun contenu ne dépend de l'une ou l'autre pour
+    s'afficher : sans JavaScript, ni l'une ni l'autre ne s'affiche jamais.
+
+    POUR REVENIR À LA VERSION PRÉCÉDENTE, remplacer data-intro="draw-sweep"
+    par data-intro="draw" sur <html>, tout en haut de ce fichier. Rien
+    d'autre à toucher :
+      - data-intro="draw"  → tracé du signe, puis remplissage en fondu instantané
+                              (version précédente, js/intro-draw.js)
+
+    (La toute première version, un simple fondu sans tracé, a été retirée du
+    projet à la demande du client une fois la version au tracé validée.)
+    ============================================================================
+  -->
+
+  <!-- Version « tracé + fondu instantané » (version précédente, conservée intacte) — voir js/intro-draw.js -->
+  <div id="intro-overlay-draw" aria-hidden="true">
+    <div class="intro-stack">
+      <div id="intro-mark" class="intro-mark">
+        <svg id="intro-sign-svg" class="intro-sign-svg" viewBox="0 0 237 220" aria-hidden="true">
+          <path id="intro-sign-path" class="intro-sign-path" fill-rule="evenodd" d="M 191.348 25.750 C 190.496 27.813, 183.258 44.350, 175.264 62.500 C 154.548 109.534, 143.927 134.260, 144.286 134.619 C 144.736 135.069, 182.904 76.293, 199.500 49.594 C 202.800 44.285, 208.071 35.904, 211.213 30.971 L 216.926 22 204.912 22 L 192.898 22 191.348 25.750 M 22 37.872 C 22 38.352, 23.723 39.020, 25.829 39.357 C 35.147 40.847, 37.487 44.512, 60.718 94 C 75.577 125.653, 89.181 154.376, 97.649 171.971 L 105.576 188.443 109.645 180.971 C 111.883 176.862, 116.465 168.309, 119.826 161.964 L 125.938 150.428 112.152 121.464 C 104.569 105.534, 93.557 82.600, 87.680 70.500 C 81.803 58.400, 76.996 47.738, 76.997 46.806 C 77.003 43.565, 81.272 39.907, 85.752 39.306 C 97.078 37.787, 86.922 37, 56 37 C 37.300 37, 22 37.392, 22 37.872 M 205.477 67.250 C 203.943 69.588, 200.803 73.975, 198.499 77 C 169.738 114.769, 131.293 167.515, 127.069 175 C 124.120 180.225, 119.493 188.164, 116.785 192.642 L 111.862 200.784 114.909 206.819 C 117.722 212.392, 120 215.286, 120 213.287 C 120 212.830, 126.351 201.891, 134.113 188.978 C 162.051 142.501, 205.839 69.038, 207.905 65.178 C 209.857 61.529, 208.434 62.744, 205.477 67.250"/>
+        </svg>
+        <img id="intro-word" class="intro-word" src="images/logo-word.png" alt="">
+      </div>
+      <img id="intro-subtitle" class="intro-subtitle" src="images/logo-subtitle.png" alt="">
+    </div>
+  </div>
+
+  <!-- Version « tracé + remplissage progressif » (actuelle) — voir js/intro-draw-sweep.js -->
+  <div id="intro-overlay-sweep" aria-hidden="true">
+    <div class="intro-stack">
+      <div id="intro-mark-sweep" class="intro-mark">
+        <svg class="intro-sign-svg" viewBox="0 0 237 220" fill-rule="evenodd" aria-hidden="true">
+          <path id="intro-sweep-outline" class="intro-sweep-outline" d="M 191.348 25.750 C 190.496 27.813, 183.258 44.350, 175.264 62.500 C 154.548 109.534, 143.927 134.260, 144.286 134.619 C 144.736 135.069, 182.904 76.293, 199.500 49.594 C 202.800 44.285, 208.071 35.904, 211.213 30.971 L 216.926 22 204.912 22 L 192.898 22 191.348 25.750 M 22 37.872 C 22 38.352, 23.723 39.020, 25.829 39.357 C 35.147 40.847, 37.487 44.512, 60.718 94 C 75.577 125.653, 89.181 154.376, 97.649 171.971 L 105.576 188.443 109.645 180.971 C 111.883 176.862, 116.465 168.309, 119.826 161.964 L 125.938 150.428 112.152 121.464 C 104.569 105.534, 93.557 82.600, 87.680 70.500 C 81.803 58.400, 76.996 47.738, 76.997 46.806 C 77.003 43.565, 81.272 39.907, 85.752 39.306 C 97.078 37.787, 86.922 37, 56 37 C 37.300 37, 22 37.392, 22 37.872 M 205.477 67.250 C 203.943 69.588, 200.803 73.975, 198.499 77 C 169.738 114.769, 131.293 167.515, 127.069 175 C 124.120 180.225, 119.493 188.164, 116.785 192.642 L 111.862 200.784 114.909 206.819 C 117.722 212.392, 120 215.286, 120 213.287 C 120 212.830, 126.351 201.891, 134.113 188.978 C 162.051 142.501, 205.839 69.038, 207.905 65.178 C 209.857 61.529, 208.434 62.744, 205.477 67.250"/>
+          <path class="intro-sweep-fill" d="M 191.348 25.750 C 190.496 27.813, 183.258 44.350, 175.264 62.500 C 154.548 109.534, 143.927 134.260, 144.286 134.619 C 144.736 135.069, 182.904 76.293, 199.500 49.594 C 202.800 44.285, 208.071 35.904, 211.213 30.971 L 216.926 22 204.912 22 L 192.898 22 191.348 25.750 M 22 37.872 C 22 38.352, 23.723 39.020, 25.829 39.357 C 35.147 40.847, 37.487 44.512, 60.718 94 C 75.577 125.653, 89.181 154.376, 97.649 171.971 L 105.576 188.443 109.645 180.971 C 111.883 176.862, 116.465 168.309, 119.826 161.964 L 125.938 150.428 112.152 121.464 C 104.569 105.534, 93.557 82.600, 87.680 70.500 C 81.803 58.400, 76.996 47.738, 76.997 46.806 C 77.003 43.565, 81.272 39.907, 85.752 39.306 C 97.078 37.787, 86.922 37, 56 37 C 37.300 37, 22 37.392, 22 37.872 M 205.477 67.250 C 203.943 69.588, 200.803 73.975, 198.499 77 C 169.738 114.769, 131.293 167.515, 127.069 175 C 124.120 180.225, 119.493 188.164, 116.785 192.642 L 111.862 200.784 114.909 206.819 C 117.722 212.392, 120 215.286, 120 213.287 C 120 212.830, 126.351 201.891, 134.113 188.978 C 162.051 142.501, 205.839 69.038, 207.905 65.178 C 209.857 61.529, 208.434 62.744, 205.477 67.250"/>
+        </svg>
+        <img id="intro-word-sweep" class="intro-word" src="images/logo-word.png" alt="">
+      </div>
+      <img id="intro-subtitle-sweep" class="intro-subtitle" src="images/logo-subtitle.png" alt="">
+    </div>
+  </div>
+
+  <div id="page">
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo-link" href="/accueil" aria-label="VOVALO, accueil">
+        <img src="images/logo-header.png" width="136" height="40" alt="VOVALO — Valorisation d’entreprise" class="logo-header-img logo-header-img--full">
+        <img src="images/logo-mark.png" width="43" height="40" alt="VOVALO — Valorisation d’entreprise" class="logo-header-img logo-header-img--mark">
+      </a>
+      <div class="header-actions">
+        <nav class="nav-desktop" aria-label="Navigation principale">
+          <ul class="nav-list">
+            <li><a href="/accueil" aria-current="page">Accueil</a></li>
+            <li><a href="/equipe">Équipe</a></li>
+          </ul>
+        </nav>
+        <details class="nav-toggle">
+          <summary>Menu</summary>
+          <nav class="nav-panel" aria-label="Navigation principale">
+            <ul class="nav-list">
+              <li><a href="/accueil" aria-current="page">Accueil</a></li>
+              <li><a href="/equipe">Équipe</a></li>
+            </ul>
+          </nav>
+        </details>
+        <a class="btn btn--header" href="/contact">Prendre contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <section class="hero on-navy">
+      <div class="wrap">
+        <h1>Connaître la vraie valeur de votre entreprise</h1>
+        <p class="lead">VOVALO réalise des valorisations financières indépendantes pour les dirigeants de TPE et PME.</p>
+        <a class="btn btn--light" href="/contact">Prendre contact</a>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="ce-que-vous-faites">
+      <div class="wrap">
+        <h2 id="ce-que-vous-faites">Pourquoi faire estimer la valeur de votre entreprise&nbsp;?</h2>
+        <div class="prose">
+          <p>Vous vous demandez ce que vaut réellement votre entreprise&nbsp;? Pour anticiper une transmission, préparer une décision, ou simplement y voir clair, nous réalisons un rapport de valorisation complet et argumenté.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tint" aria-labelledby="notre-methode">
+      <div class="wrap">
+        <h2 id="notre-methode">Notre méthode</h2>
+        <ol class="steps">
+          <li>
+            <div>
+              <h3>Premier échange*</h3>
+              <p>Un rendez-vous pour comprendre votre entreprise, votre activité et vos objectifs, sans engagement.</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h3>Collecte des documents</h3>
+              <p>Bilans, comptes de résultat, effectifs, actifs&nbsp;: nous vous indiquons précisément ce dont nous avons besoin. Un accord de confidentialité est signé avant tout échange.</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h3>Analyse et valorisation</h3>
+              <p>Nous étudions votre entreprise sous plusieurs angles pour établir une estimation argumentée.</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h3>Restitution du rapport</h3>
+              <p>Un document complet présentant la valeur de votre entreprise, ses points forts, ses fragilités et les leviers pour la renforcer. Estimation indicative, sans valeur d’expertise comptable ni valeur opposable.</p>
+            </div>
+          </li>
+        </ol>
+        <p class="steps-note">* Le forfait de la valorisation vous est présenté après ce premier échange.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="exemple">
+      <div class="wrap">
+        <h2 id="exemple">Un exemple de rapport</h2>
+        <p class="fictif-banner" role="note">Exemple fictif&nbsp;: entreprise imaginaire. Tous les noms et chiffres ci-dessous sont inventés pour l’illustration.</p>
+        <p class="prose" style="margin:1.25rem 0 1.5rem">Aperçu de quelques pages&nbsp;: le rapport complet en compte une quinzaine, avec l’analyse détaillée du patrimoine, de la rentabilité et des méthodes de valorisation.</p>
+
+        <!--
+          Ancienne version (3 cartes simulées en HTML/CSS), conservée au cas où.
+          Remplacée par 4 vraies captures du rapport-modèle rempli avec l'exemple
+          fictif (Menuiserie Exemple) — voir .report-gallery ci-dessous.
+
+        <div class="sample">
+          <article class="sample-page sample-cover on-navy" aria-label="Couverture de l’exemple fictif">
+            <span class="tag">Exemple fictif : entreprise imaginaire</span>
+            <div>
+              <h3>Rapport de valorisation</h3>
+              <p>Menuiserie Exemple (entreprise imaginaire)</p>
+              <p>Estimation indicative</p>
+            </div>
+            <span class="wordmark">VOVALO</span>
+          </article>
+
+          <article class="sample-page" aria-label="Page valeur estimée de l’exemple fictif">
+            <span class="tag">Exemple fictif : entreprise imaginaire</span>
+            <h3>La valeur estimée</h3>
+            <p class="big">380&nbsp;000 à 460&nbsp;000&nbsp;€</p>
+            <p>Fourchette indicative, chiffres inventés pour l’exemple. Elle est expliquée dans le rapport, étape par étape.</p>
+          </article>
+
+          <article class="sample-page" aria-label="Page facteurs et leviers de l’exemple fictif">
+            <span class="tag">Exemple fictif : entreprise imaginaire</span>
+            <h3>Points forts</h3>
+            <ul><li>Carnet de commandes sur plusieurs mois</li><li>Équipe stable</li></ul>
+            <h3 style="margin-top:1rem">Fragilités</h3>
+            <ul><li>Deux clients pèsent beaucoup dans le chiffre d’affaires</li><li>Machines anciennes</li></ul>
+            <h3 style="margin-top:1rem">Leviers</h3>
+            <ul><li>Élargir la clientèle</li><li>Planifier le renouvellement du matériel</li></ul>
+          </article>
+        </div>
+        -->
+
+        <div class="report-gallery">
+          <figure class="report-gallery__item">
+            <img src="images/rapport-1-couverture.jpg" width="993" height="500" alt="Couverture d’un rapport de valorisation VOVALO, exemple fictif — extrait parmi une quinzaine de pages" loading="lazy">
+            <figcaption>Couverture — extrait parmi ~15 pages</figcaption>
+          </figure>
+          <figure class="report-gallery__item">
+            <img src="images/rapport-2-presentation-societe.jpg" width="993" height="520" alt="Extrait d’un rapport de valorisation VOVALO : page de présentation de l’entreprise (exemple fictif)" loading="lazy">
+            <figcaption>Présentation de l’entreprise — extrait</figcaption>
+          </figure>
+          <figure class="report-gallery__item">
+            <img src="images/rapport-3-synthese-graphique.jpg" width="993" height="720" alt="Extrait d’un rapport de valorisation VOVALO : synthèse graphique des méthodes (exemple fictif)" loading="lazy">
+            <figcaption>Synthèse des méthodes de valorisation — extrait</figcaption>
+          </figure>
+          <figure class="report-gallery__item">
+            <img src="images/rapport-4-conclusion.jpg" width="993" height="870" alt="Extrait d’un rapport de valorisation VOVALO : page de conclusion (exemple fictif)" loading="lazy">
+            <figcaption>Conclusion — extrait</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tint">
+      <div class="wrap">
+        <div class="subsection" aria-labelledby="secteurs">
+          <h2 id="secteurs">Nos secteurs</h2>
+          <div class="prose">
+            <p>Nous accompagnons les dirigeants de TPE et PME de tous secteurs&nbsp;: bâtiment, industrie, commerce, artisanat et bien au-delà.</p>
+          </div>
+        </div>
+        <div class="subsection" aria-labelledby="retours">
+          <h2 id="retours">Retours de nos clients</h2>
+          <div class="prose">
+            <p>Nous démarrons notre activité&nbsp;: les retours de nos clients seront bientôt disponibles ici.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="confiance">
+      <div class="wrap">
+        <h2 id="confiance">Ce sur quoi vous pouvez compter</h2>
+        <dl class="ledger">
+          <div class="row">
+            <dt>Confidentialité</dt>
+            <dd>Un accord de confidentialité est signé avant tout échange de documents. Vos données servent uniquement à la mission.</dd>
+          </div>
+          <div class="row">
+            <dt>Une estimation indicative</dt>
+            <dd>Le rapport donne un ordre de grandeur argumenté. Il n’a pas de valeur d’expertise comptable ni de valeur opposable à un tiers.</dd>
+          </div>
+          <div class="row">
+            <dt>Un interlocuteur identifié pour chaque étape</dt>
+            <dd>
+              <p>Baptiste vous accompagne depuis le premier échange jusqu’à la collecte des documents. Matthieu établit le rapport et vous en présente les conclusions.</p>
+              <a class="link-more" href="/equipe">Notre équipe</a>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="cta on-navy" aria-labelledby="cta-titre">
+      <div class="wrap">
+        <h2 id="cta-titre">Combien vaut réellement votre entreprise&nbsp;? Parlons-en.</h2>
+        <a class="btn btn--light" href="/contact">Prendre contact</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer on-navy">
+    <div class="wrap">
+      <div>
+        <a class="logo-link" href="/accueil" aria-label="VOVALO, accueil">
+          <img src="images/logo-fond-navy.png" width="188" height="72" alt="VOVALO — Valorisation d’entreprise" class="logo-footer-img">
+        </a>
+        <p style="margin:.5rem 0 0">Micro-entreprise — Matthieu Lathuilière</p>
+      </div>
+      <nav aria-label="Informations légales">
+        <ul>
+          <li><a href="/mentions-legales">Mentions légales</a></li>
+          <li><a href="/confidentialite">Politique de confidentialité</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+  </div>
+
+  <script src="js/intro-draw.js"></script>
+  <script src="js/intro-draw-sweep.js"></script>
+</body>
+</html>

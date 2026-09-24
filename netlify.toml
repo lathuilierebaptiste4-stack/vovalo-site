@@ -1,0 +1,65 @@
+# VOVALO — configuration Netlify
+# HTTPS et certificat : gérés automatiquement par Netlify (rien à configurer ici).
+# Le formulaire de contact est géré par Netlify Forms (voir contact.html).
+
+[build]
+  # Site statique, sans étape de build : la racine du dépôt est publiée telle quelle.
+  publish = "."
+
+# --- URLs propres (sans .html) ---
+# Netlify sert déjà /equipe à partir de equipe.html. Les règles ci-dessous
+# redirigent les anciennes adresses vers la version propre.
+# force = true est nécessaire dès qu'un fichier existe réellement à l'adresse
+# d'origine (equipe.html existe) : sans lui, la redirection serait ignorée.
+
+[[redirects]]
+  from = "/"
+  to = "/accueil"
+  status = 301
+
+[[redirects]]
+  from = "/index"
+  to = "/accueil"
+  status = 301
+
+[[redirects]]
+  from = "/index.html"
+  to = "/accueil"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/accueil.html"
+  to = "/accueil"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/equipe.html"
+  to = "/equipe"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/contact.html"
+  to = "/contact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/mentions-legales.html"
+  to = "/mentions-legales"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/confidentialite.html"
+  to = "/confidentialite"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/cgv.html"
+  to = "/cgv"
+  status = 301
+  force = true
