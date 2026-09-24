@@ -161,7 +161,7 @@ a { color: inherit; text-underline-offset: 0.2em; }
   background: var(--white); border-bottom: 1px solid var(--grey);
   padding: 1rem var(--gutter) 1.5rem;
 }
-.site-header { position: relative; }
+.site-header { position: relative; z-index: 20; } /* le menu déroulant doit passer au-dessus du contenu animé (.wrap) */
 .nav-panel .nav-list { flex-direction: column; align-items: stretch; gap: 0; }
 .nav-panel .nav-list li { border-top: 1px solid var(--grey); }
 .nav-panel .nav-list a { display: block; padding: .9rem 0; }
