@@ -291,6 +291,11 @@ a { color: inherit; text-underline-offset: 0.2em; }
 }
 .photo-caption { margin: .75rem 0 1.5rem; max-width: 42rem; font-size: .95rem; color: var(--ink-soft); }
 
+/* Photo unique des deux frères : format horizontal, sous l'introduction */
+.photo-groupe { margin: 2rem 0 0; max-width: 42rem; }
+.photo-groupe .photo-placeholder { aspect-ratio: 3 / 2; }
+.photo-groupe img { display: block; width: 100%; height: auto; }
+
 @media (max-width: 40rem) {
   .person { flex-direction: column; align-items: stretch; }
   .person .photo-placeholder { flex: none; width: 60%; max-width: 12rem; margin-inline: auto; }
