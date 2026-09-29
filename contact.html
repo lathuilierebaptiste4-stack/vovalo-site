@@ -70,8 +70,10 @@
             <input id="email" name="email" type="email" autocomplete="email" required maxlength="160">
           </div>
           <div class="field">
-            <label for="telephone">Votre téléphone <span class="hint">Facultatif.</span></label>
-            <input id="telephone" name="telephone" type="tel" autocomplete="tel" maxlength="40">
+            <!-- « Facultatif. » est hors du <label> : Netlify reprend le texte du libellé comme nom du champ dans l'e-mail de notification. -->
+            <label for="telephone" class="label--avec-aide">Votre téléphone</label>
+            <span class="hint hint--apres-label" id="telephone-aide">Facultatif.</span>
+            <input id="telephone" name="telephone" type="tel" autocomplete="tel" maxlength="40" aria-describedby="telephone-aide">
           </div>
           <div class="field">
             <label for="message">Votre message</label>

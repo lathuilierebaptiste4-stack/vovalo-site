@@ -260,6 +260,9 @@ a { color: inherit; text-underline-offset: 0.2em; }
 .field { margin-bottom: 1.5rem; }
 .field label { display: block; font-weight: 600; margin-bottom: .4rem; }
 .field .hint { display: block; font-weight: 400; color: var(--ink-soft); font-size: .95rem; }
+/* Aide placée juste après le libellé (hors du <label>) : même rendu qu'à l'intérieur */
+.field .label--avec-aide { margin-bottom: 0; }
+.field .hint--apres-label { margin-bottom: .4rem; }
 .field input, .field textarea {
   width: 100%; font: inherit; color: var(--navy); background: var(--white);
   border: 2px solid var(--navy); border-radius: 2px; padding: .7rem .8rem;
